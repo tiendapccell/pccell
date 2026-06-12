@@ -37,7 +37,7 @@
             name: 'Auriculares Noga Stormer',
             description: 'Llevá tu experiencia gamer al siguiente nivel con un sonido potente, comodidad extrema y un diseño único.',
             price: 25000,
-            image: 'img/stormer.png'
+            image: 'img/stromer.png'
         },
         {
             id: 2,
