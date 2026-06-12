@@ -1,6 +1,6 @@
 {
-    "name": "ShopNow — Tienda Online",
-    "short_name": "ShopNow",
+    "name": "PCCELL — Tienda Online",
+    "short_name": "PCCELL",
     "description": "Tu tienda online de confianza. Productos seleccionados con la mejor calidad y precio.",
     "start_url": "./index.html",
     "scope": "./",
