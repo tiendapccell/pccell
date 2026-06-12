@@ -1,5 +1,5 @@
 /* ================================================================
-   ShopNow — service-worker.js
+   PCCELL — service-worker.js
    - Cachea los archivos principales en la primera visita.
    - Estrategia "cache first, network fallback" para recursos estáticos.
    - Estrategia "network first, cache fallback" para solicitudes externas
