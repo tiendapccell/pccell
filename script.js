@@ -1,5 +1,5 @@
 /* ================================================================
-   ShopNow — script.js
+   PCCELL — script.js
    Lógica principal del ecommerce:
    - Catálogo de productos.
    - Carrito de compras (con localStorage).
@@ -34,17 +34,17 @@
     const PRODUCTS = [
         {
             id: 1,
-            name: 'Auriculares Bluetooth Pro',
-            description: 'Audio de alta fidelidad con cancelación de ruido activa y batería de 30h.',
-            price: 89999,
-            image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80'
+            name: 'Auriculares Noga Stormer',
+            description: 'Llevá tu experiencia gamer al siguiente nivel con un sonido potente, comodidad extrema y un diseño único.',
+            price: 25000,
+            image: 'img/stormer.png'
         },
         {
             id: 2,
-            name: 'Smartwatch Deportivo',
-            description: 'Monitor cardíaco, GPS integrado, notificaciones y resistente al agua 50m.',
-            price: 124999,
-            image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80'
+            name: 'Aspiradora Kärcher VC1',
+            description: 'Combina funcionalidad y eficiencia para limpiar suelos y alfombras sin esfuerzo. Permite el acceso a huecos estrechos, esquinas y bordes.',
+            price: 220000,
+            image: 'img/vc1.png'
         },
         {
             id: 3,
