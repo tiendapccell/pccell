@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Configuración básica del documento -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2563eb">
+    <meta name="description" content="Tienda online moderna con productos de calidad. Compra fácil y rápido.">
+
+    <!-- Título de la tienda -->
+    <title>PCCELL — Tienda Online</title>
+
+    <!-- Favicon personalizado (logo de la tienda) -->
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="apple-touch-icon" href="img/logo.png">
+
+    <!-- Manifest para PWA -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Font Awesome (única librería externa permitida) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Hoja de estilos propia -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ============================================================
+         MODAL DE INSTALACIÓN DE LA APLICACIÓN (PWA)
+         Se muestra al ingresar si la app no está instalada y el
+         usuario no lo ha cerrado previamente.
+         ============================================================ -->
+    <div id="installModal" class="modal-install" aria-hidden="true">
+        <div class="modal-install__content">
+            <div class="modal-install__icon">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+            </div>
+            <h2 class="modal-install__title">Instalá nuestra tienda</h2>
+            <p class="modal-install__desc">
+                Accedé más rápido y disfruta de una mejor experiencia agregando la aplicación a tu dispositivo.
+            </p>
+            <div class="modal-install__actions">
+                <button id="btnInstall" class="btn btn--primary">
+                    <i class="fa-solid fa-download"></i> Instalar
+                </button>
+                <button id="btnCloseInstall" class="btn btn--ghost">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         ENCABEZADO FIJO
+         Contiene logo, nombre, búsqueda, carrito y menú móvil.
+         ============================================================ -->
+    <header class="header">
+        <div class="container header__inner">
+            <!-- Logo + nombre -->
+            <a href="#top" class="header__brand" aria-label="Inicio">
+                <img src="img/logo.png" alt="Logo Pccell" class="header__logo"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <span class="header__logo-fallback"><i class="fa-solid fa-store"></i></span>
+                <span class="header__name">PCCELL</span>
+            </a>
+
+            <!-- Barra de búsqueda -->
+            <form class="search" role="search" onsubmit="return false;">
+                <i class="fa-solid fa-magnifying-glass search__icon"></i>
+                <input type="search" id="searchInput" class="search__input"
+                       placeholder="Buscar productos..." autocomplete="off">
+            </form>
+
+            <!-- Acciones: carrito y menú -->
+            <div class="header__actions">
+                <button class="icon-btn" id="btnCart" aria-label="Abrir carrito">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="badge" id="cartBadge">0</span>
+                </button>
+                <button class="icon-btn icon-btn--menu" id="btnMenu" aria-label="Abrir menú">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menú móvil desplegable -->
+        <nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+            <ul>
+                <li><a href="#top"><i class="fa-solid fa-house"></i> Inicio</a></li>
+                <li><a href="#productos"><i class="fa-solid fa-box"></i> Productos</a></li>
+                <li><a href="#contacto"><i class="fa-solid fa-phone"></i> Contacto</a></li>
+                <li><a href="#ubicacion"><i class="fa-solid fa-location-dot"></i> Ubicación</a></li>
+                <li>
+                    <a href="https://wa.me/5492314417643" target="_blank" rel="noopener">
+                        <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ============================================================
+         BANNER PRINCIPAL / HERO
+         ============================================================ -->
+    <section class="hero" id="top">
+        <div class="container hero__inner">
+            <div class="hero__text">
+                <span class="hero__tag">Nueva colección 2026</span>
+                <h1 class="hero__title">Descubrí productos increíbles</h1>
+                <p class="hero__subtitle">
+                    Calidad, precios competitivos y envío rápido a todo el país. ¡Compra sin moverte de casa!
+                </p>
+                <div class="hero__actions">
+                    <a href="#productos" class="btn btn--primary btn--lg">
+                        <i class="fa-solid fa-bag-shopping"></i> Ver productos
+                    </a>
+                    <a href="https://wa.me/5492314417643" target="_blank" rel="noopener" class="btn btn--ghost btn--lg">
+                        <i class="fa-brands fa-whatsapp"></i> Consultar
+                    </a>
+                </div>
+            </div>
+            <div class="hero__image">
+                <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=80"
+                     alt="Bienvenido a ShopNow">
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         CATÁLOGO DE PRODUCTOS
+         ============================================================ -->
+    <main class="section" id="productos">
+        <div class="container">
+            <div class="section__header">
+                <h2 class="section__title">Nuestros productos</h2>
+                <p class="section__subtitle">
+                    <span id="resultsCount">0</span> productos disponibles
+                </p>
+            </div>
+
+            <!-- Grid de productos (se genera por JS) -->
+            <div class="products-grid" id="productsGrid">
+                <!-- Productos dinámicos -->
+            </div>
+
+            <!-- Mensaje cuando no hay resultados -->
+            <div class="empty-state" id="emptyState" hidden>
+                <i class="fa-solid fa-magnifying-glass-minus"></i>
+                <h3>No encontramos productos</h3>
+                <p>Prueba con otros términos de búsqueda.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- ============================================================
+         DRAWER DEL CARRITO
+         ============================================================ -->
+    <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+        <div class="cart-drawer__header">
+            <h3><i class="fa-solid fa-cart-shopping"></i> Tu carrito</h3>
+            <button class="icon-btn" id="btnCloseCart" aria-label="Cerrar carrito">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <div class="cart-drawer__body" id="cartBody">
+            <!-- Ítems del carrito -->
+        </div>
+
+        <div class="cart-drawer__empty" id="cartEmpty" hidden>
+            <i class="fa-solid fa-basket-shopping"></i>
+            <h3>Tu carrito está vacío</h3>
+            <p>Explorá nuestros productos y agregá lo que te guste.</p>
+        </div>
+
+        <div class="cart-drawer__footer" id="cartFooter">
+            <div class="cart-drawer__totals">
+                <div><span>Productos:</span><strong id="cartQty">0</strong></div>
+                <div class="cart-drawer__total-row">
+                    <span>Total:</span>
+                    <strong id="cartTotal">$0</strong>
+                </div>
+            </div>
+            <button class="btn btn--whatsapp btn--block" id="btnWhatsapp">
+                <i class="fa-brands fa-whatsapp"></i> Enviar pedido por WhatsApp
+            </button>
+            <button class="btn btn--ghost btn--block" id="btnClearCart">
+                <i class="fa-solid fa-trash"></i> Vaciar carrito
+            </button>
+        </div>
+    </aside>
+
+    <!-- Overlay del carrito -->
+    <div class="overlay" id="cartOverlay"></div>
+
+    <!-- ============================================================
+         BOTÓN FLOTANTE DE VOLVER ARRIBA
+         ============================================================ -->
+    <button class="back-to-top" id="btnBackToTop" aria-label="Volver arriba">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <!-- ============================================================
+         TOAST / NOTIFICACIÓN
+         ============================================================ -->
+    <div class="toast" id="toast" role="status" aria-live="polite">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toastMsg">Producto agregado</span>
+    </div>
+
+    <!-- ============================================================
+         PIE DE PÁGINA
+         ============================================================ -->
+    <footer class="footer" id="contacto">
+        <div class="container footer__grid">
+            <div class="footer__col">
+                <div class="footer__brand">
+                    <img src="img/logo.png" alt="Logo" class="footer__logo"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <span class="header__logo-fallback"><i class="fa-solid fa-store"></i></span>
+                    <strong>PCCELL</strong>
+                </div>
+                <p>Tu tienda online de confianza. Productos seleccionados con la mejor calidad y precio.</p>
+            </div>
+
+            <div class="footer__col" id="ubicacion">
+                <h4>Contacto</h4>
+                <ul class="footer__list">
+                    <li><i class="fa-solid fa-location-dot"></i> Av. Principal 123, Buenos Aires, Argentina</li>
+                    <li><i class="fa-solid fa-phone"></i> +54 9 2314 41-7643</li>
+                    <li><i class="fa-solid fa-envelope"></i> ventas@shopnow.com.ar</li>
+                    <li>
+                        <a href="https://wa.me/5492314417643" target="_blank" rel="noopener">
+                            <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer__col">
+                <h4>Enlaces</h4>
+                <ul class="footer__list">
+                    <li><a href="#top">Inicio</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__col">
+                <h4>Síguenos</h4>
+                <div class="footer__socials">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://wa.me/5492314417643" target="_blank" rel="noopener" aria-label="WhatsApp">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <div class="container">
+                <small>© <span id="year"></span> PCCELL. Todos los derechos reservados.</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script principal -->
+    <script src="script.js"></script>
+</body>
+</html>

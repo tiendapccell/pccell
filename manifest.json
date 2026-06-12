@@ -1,0 +1,42 @@
+{
+    "name": "ShopNow — Tienda Online",
+    "short_name": "ShopNow",
+    "description": "Tu tienda online de confianza. Productos seleccionados con la mejor calidad y precio.",
+    "start_url": "./index.html",
+    "scope": "./",
+    "display": "standalone",
+    "orientation": "portrait",
+    "background_color": "#f7f8fc",
+    "theme_color": "#2563eb",
+    "lang": "es-AR",
+    "dir": "ltr",
+    "categories": ["shopping", "business"],
+    "icons": [
+        {
+            "src": "img/logo.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "img/logo.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Ver productos",
+            "short_name": "Productos",
+            "description": "Explora el catálogo de productos",
+            "url": "./index.html#productos"
+        },
+        {
+            "name": "Contacto WhatsApp",
+            "short_name": "WhatsApp",
+            "description": "Envíanos un mensaje por WhatsApp",
+            "url": "https://wa.me/5492314417643"
+        }
+    ]
+}
